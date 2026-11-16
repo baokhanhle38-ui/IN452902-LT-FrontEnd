@@ -1,0 +1,177 @@
+/* Câu 1b: viết CSS tại đây */
+/*1. Biến và reset*/
+:root {
+  --color-primary: #006CB4;
+  --color-danger: #E40C24;
+  --color-text: #1f2937;
+  --color-border: #d0d7de;
+  --color-bg: #f5f8fb;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --radius: 8px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+a { color: var(--color-primary); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 2. Header: Flexbox */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-primary);
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus,
+.menu a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+/*  3. Nội dung chính và form  */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-md);
+}
+
+.search-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.search-form input {
+  flex: 1;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.search-form button {
+  padding: var(--space-sm) var(--space-md);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+
+#status {
+  min-height: 1.5em;
+  margin: var(--space-md) 0;
+  font-weight: 500;
+}
+
+/* 4. Danh sách card: Grid, mobile-first*/
+.event-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* điện thoại: 1 cột */
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .event-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1200px) {
+  .event-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* 5. Card */
+.card {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: calc(var(--radius) / 2);
+}
+
+.card-title {
+  margin: var(--space-sm) 0;
+  font-size: 1.125rem;
+}
+
+.card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-title a:hover,
+.card-title a:focus {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.card p { margin: var(--space-xs) 0; }
+
+.badge {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  border-radius: calc(var(--radius) / 2);
+  background: var(--color-danger);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 6. Footer*/
+.site-footer {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
